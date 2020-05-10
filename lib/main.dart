@@ -34,6 +34,62 @@ class XylophoneApp extends StatelessWidget {
     );
   }
 
+  Widget buildKeyFlute({String note, Color color}) {
+    String noteText = 'Inconnu';
+    switch (note) {
+      case 'a':
+        {
+          noteText = 'La (A)';
+        }
+        break;
+      case 'b':
+        {
+          noteText = 'Si (B)';
+        }
+        break;
+      case 'c':
+        {
+          noteText = 'Do (C)';
+        }
+        break;
+      case 'd':
+        {
+          noteText = 'Ré (D)';
+        }
+        break;
+      case 'e':
+        {
+          noteText = 'Mi (E)';
+        }
+        break;
+      case 'f':
+        {
+          noteText = 'Fa (F)';
+        }
+        break;
+      case 'g':
+        {
+          noteText = 'Sol (G)';
+        }
+        break;
+      default:
+        {
+          throw Exception('Unknown note called $note.');
+        }
+        break;
+    }
+    return Expanded(
+      child: FlatButton(
+        onPressed: () {
+          final player = AudioCache(prefix: 'flute/');
+          player.play('mtg__flute-${note}4.wav');
+        },
+        color: color,
+        child: Text(noteText),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -59,7 +115,7 @@ class XylophoneApp extends StatelessWidget {
               SizedBox(
                 width: 10.0,
               ),
-              Expanded(
+              /*Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: <Widget>[
@@ -77,6 +133,20 @@ class XylophoneApp extends StatelessWidget {
                         soundName: 'guitar', color: Colors.green.shade200),
                     buildKeyInstrument(
                         soundName: 'cello', color: Colors.purple.shade200),
+                  ],
+                ),
+              ),*/
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: <Widget>[
+                    buildKeyFlute(note: 'c', color: Colors.red.shade200),
+                    buildKeyFlute(note: 'd', color: Colors.orange.shade200),
+                    buildKeyFlute(note: 'e', color: Colors.yellow.shade200),
+                    buildKeyFlute(note: 'f', color: Colors.blue.shade200),
+                    buildKeyFlute(note: 'g', color: Colors.teal.shade200),
+                    buildKeyFlute(note: 'a', color: Colors.green.shade200),
+                    buildKeyFlute(note: 'b', color: Colors.purple.shade200),
                   ],
                 ),
               ),
