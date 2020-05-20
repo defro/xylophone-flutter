@@ -1,4 +1,4 @@
-package xylophone-jgaujard;
+package io.joel.xylophone;
 
 import android.os.Bundle;
 import io.flutter.app.FlutterActivity;
